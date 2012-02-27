@@ -27,8 +27,23 @@ end
 
 # convert "wombat" into "abmotw". All anagrams share a signature
 def signature_of(word)
-  word.unpack("c*").sort.pack("c*")
+  word.unpack("c*").sort.pack("c*") #Separa los ASCII de los caracteres de word en formato de cero o más caracteres, los ordena y los vuelve a convertir en una cadena.
 end
 
+signatures = Hash.new #Crea un hash tal que cada elemento del hash, si no esta inicializado, se inicializa según el bloque.
+File.foreach(dictionary) do |line| #Cogemos una línea
+  word = line.chomp #Quita el retorno de carro final de la línea
+  signature = signature_of(word) #Buscamos la firma de la palabra
+  (signatures[signature] ||= []) << word #signatures es un hash, en el que empujamos word. El hash es <firma, array de anagramas>
+end
+
+ARGV.each do |word| #Recorre todas las palabras que no se han consumido de ARGV, se guardan en word
+  signature = signature_of(word) #Calculamos la firma
+  if signatures[signature] #Si tiene algo, volcamos todo el array de anagramas
+    puts "Anagrams of #{word}: #{signatures[signature].join(', ')}"
+  else
+    puts "No anagrams of #{word} in #{dictionary}"
+  end
+end
 
 
