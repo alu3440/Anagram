@@ -66,3 +66,8 @@ ARGV.each do |word|
   end
 end
 
+# Buuuuuuuuuuuuuuuuuuuuuuuuuuuu
+def tontuna(word)
+  puts "Esto es una tontuna"
+end
+
