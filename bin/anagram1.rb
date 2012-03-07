@@ -71,3 +71,8 @@ def tontuna(word)
   puts "Esto es una tontuna"
 end
 
+# No entiendo nadaaaaaaaaa
+def cosarara(line)
+  puts "No sé hacer nada más en ruby ;P"
+end
+
