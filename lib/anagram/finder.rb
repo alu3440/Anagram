@@ -1,3 +1,5 @@
+# Luis te cambio esto ok ?
+
 module Anagram
   class Finder
     attr_accessor :signatures
